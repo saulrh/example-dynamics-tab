@@ -156,6 +156,8 @@ void ExampleDynamicSimulationTab::OnButton(wxCommandEvent &evt) {
             SimulateFrame();
         std::cout << "(I) Simulated to frame " << n << std::endl;
         viewer->UpdateCamera();
+        
+        PopulateTimeline();
 
         // if (mSimTimer->IsRunning())
         // {
