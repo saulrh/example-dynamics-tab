@@ -299,7 +299,7 @@ void ExampleDynamicSimulationTab::SimulateFrame()
     wi.mWorldState = mCurrentSimState;
     mEuIntegrator.integrate(&wi, mWorld->mTimeStep);
     wi.mWorldState->writeToWorld(mWorld, true);
-    // viewer->UpdateCamera();
+    viewer->UpdateCamera();
 
     mSimHistory.push_back(wi.mWorldState);
 }
@@ -329,7 +329,6 @@ void ExampleDynamicSimulationTab::PopulateTimeline()
         (*it)->writeToWorld(mWorld, false);
 
         // and record that world configuration
-        viewer->UpdateCamera();
         frame->AddWorld( mWorld );
     }
 
