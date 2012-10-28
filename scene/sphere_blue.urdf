@@ -1,6 +1,6 @@
 <!-- brick.urdf -->
 
-<object name="sphere">
+<object name="sphere_blue">
   <!-- Link 0 -->
   <link name="link_0">
     <inertial>
@@ -10,12 +10,12 @@
     </inertial>
     <collision>
       <geometry>
-        <mesh filename="objects/sphere.3ds"/>
+        <mesh filename="objects/sphere_blue.3ds"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="objects/sphere.3ds"/>
+        <mesh filename="objects/sphere_blue.3ds"/>
       </geometry>
     </visual>
   </link>
