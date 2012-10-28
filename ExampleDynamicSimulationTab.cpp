@@ -278,8 +278,6 @@ void ExampleDynamicSimulationTab::OnTimer(wxTimerEvent &evt) {
 
 void ExampleDynamicSimulationTab::SimulateFrame()
 {
-    std::cout << "Simulating frame" << std::endl;
-    
     if (mCurrentSimState == NULL)
     {
         std::cout << "(!) must init dynamics before simulating (!)" << std::endl;
@@ -304,15 +302,6 @@ void ExampleDynamicSimulationTab::SimulateFrame()
     // viewer->UpdateCamera();
 
     mSimHistory.push_back(wi.mWorldState);
-
-    std::cout << "Simulated frame "
-              << mCurrentSimState->mId
-              << " T="
-              << std::fixed
-              << setprecision(3)
-              << mCurrentSimState->mT
-              << (mWorld->checkCollision() ? " Colliding" : "")
-              << std::endl;
 }
 
 ////////////////////////////////////////////////////////////////
@@ -326,7 +315,7 @@ void ExampleDynamicSimulationTab::SimulateFrame()
 void ExampleDynamicSimulationTab::PopulateTimeline()
 {
     std::cout
-        << " (+) Populating Timeline. dt: "
+        << "(+) Populating Timeline. dt: "
         << mWorld->mTimeStep
         << " T: "
         << mSimHistory.back()->mT
@@ -338,13 +327,15 @@ void ExampleDynamicSimulationTab::PopulateTimeline()
     {
         // set each robot and object to the position recorded for that frame
         (*it)->writeToWorld(mWorld, false);
-        
-        std::cout << "saving t = " << (*it)->mT << std::endl;
 
         // and record that world configuration
         viewer->UpdateCamera();
         frame->AddWorld( mWorld );
     }
+
+    std::cout
+        << "(+) Populated Timeline."
+        << std::endl;
 }
 
 ////////////////////////////////////////////////////////////////
